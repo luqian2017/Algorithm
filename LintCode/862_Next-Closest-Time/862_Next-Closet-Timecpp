@@ -1,0 +1,68 @@
+class Solution {
+public:
+    /**
+     * @param time: the given time
+     * @return: the next closest time
+     */
+    string nextClosestTime(string &time) {
+        vector<int> origTimeVec = {time[0] - '0', 
+                                   time[1] - '0', 
+                                   time[3] - '0',
+                                   time[4] - '0'};
+
+        origTimeInt = toTimeInt(origTimeVec);
+        bestSolInt = origTimeInt;
+        vector<int> solVec;
+        helper(0, origTimeVec, solVec);
+
+        string hiSol = to_string(bestSolInt / 60);
+        if (bestSolInt / 60 < 10) 
+            hiSol = "0" + hiSol;
+
+        string miSol = to_string(bestSolInt % 60);
+        if (bestSolInt % 60 < 10)
+            miSol = "0" + miSol;
+
+        return hiSol + ":" + miSol;
+    }
+
+    void helper(int index, vector<int> &origTimeVec, vector<int> &solVec) {  
+        if (index == 4) {
+            int hr = solVec[0] * 10 + solVec[1];
+            if (hr > 23) return; //剪枝
+
+            int mi = solVec[2] * 10 + solVec[3];
+            if (mi > 59) return; //剪枝 
+
+            int solInt = toTimeInt(solVec);
+            if (timeDiff(solInt, origTimeInt) < timeDiff(bestSolInt, origTimeInt)) {
+                bestSolInt = solInt;
+            }
+            return;
+        }
+
+        for (int i = 0; i < 4; ++i) {
+            solVec.push_back(origTimeVec[i]);
+            helper(index + 1, origTimeVec, solVec);
+            solVec.pop_back();
+        }
+    }
+
+
+private:
+    int origTimeInt;
+    int bestSolInt;
+    int toTimeInt(vector<int> &timeVec) {
+        int h = timeVec[0] * 10 + timeVec[1];
+        int m = timeVec[2] * 10 + timeVec[3];
+        return h * 60 + m;
+    }
+
+    int timeDiff(int time1, int time2) {
+        if (time1 == time2) {
+            return 24 * 60;
+        } else {
+            return (time1 - time2 + 24 * 60) % (24 * 60);  //重要技巧！！！
+        }
+    }
+};
