@@ -1,0 +1,1 @@
+直接用deque做的，好像也可以用queue和vector做。下次补充。
