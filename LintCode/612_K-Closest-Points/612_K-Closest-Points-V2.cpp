@@ -22,7 +22,6 @@ Point g_origin;
 
 class compare {
 public:
-
   bool operator() (const Point &a, const Point &b) const {
       long long dist_a = distance(a, g_origin);
       long long dist_b = distance(b, g_origin);
@@ -32,8 +31,6 @@ public:
       } 
       return dist_a < dist_b;
   }
-
-  
 };
 
 class Solution {
