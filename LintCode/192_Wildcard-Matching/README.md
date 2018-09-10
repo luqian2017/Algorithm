@@ -29,4 +29,4 @@ vm[2][2].memo = ? needs vm[2][3]
  
 vm[2][3].memo = true // all are ’b’
 
-We can see that vm[2][2] uses the result of vm[2][3] in advance, thus, when we calculate vm[2][3] later, we don't need to calculate it again.
+**We can see that vm[2][2] uses the result of vm[2][3] in advance, thus, when we calculate vm[2][3] later, we don't need to calculate it again**.
