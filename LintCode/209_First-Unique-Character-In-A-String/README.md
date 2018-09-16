@@ -1,0 +1,1 @@
+We can just use an array with 256 elements (as ASCII has 256 code). We can also use map and set.
