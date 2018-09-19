@@ -10,3 +10,9 @@ Note:
 We can not set both result and sum = INT_MIN as the nums[i] can be -1, thus INT_MIN+nums[i] lead to overflow.
 We cannot set both result and sum = 0 as nums[i] can be all < 0.
  
+
+Solution 2: Divide and Conquer. 
+Time complexity O(nlogn).
+TBD.
+
+
