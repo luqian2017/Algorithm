@@ -17,7 +17,8 @@ public:
         for (int i = 0; i < ARowSize; ++i) {
             for (int j = 0; j < BColSize; ++j) {
                 for (int k = 0; k < AColSize; ++k) {
-                    result[i][j] += A[i][k] * B[k][j];
+                    if ((A[i][k] != 0) && (B[k][j] != 0))
+                        result[i][j] += A[i][k] * B[k][j];
                 }
             }
         }
