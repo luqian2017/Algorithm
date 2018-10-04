@@ -18,7 +18,8 @@ public:
             int maxId = 0;
             for (int j = 0; j < i; ++j) {
                 
-                if (!divisable(nums[i], mp[j])) continue;
+        //        if (!divisable(nums[i], mp[j])) continue;
+                if (nums[i] % nums[j] != 0) continue;
                 if (A[j] > maxLen) {
                     maxLen = A[j];
                     maxId = j;
@@ -41,17 +42,6 @@ public:
             }
         }
         return mp[g_maxId];
-    }
-    
-private:
-    bool divisable(int n, vector<int> &nums) {
-        for (auto num : nums) {
-          //  if ((num % n != 0) && (n % num != 0)) return false;
-          if (n % num != 0) return false;
-
-        }
-        
-        return true;
     }
     
 };
