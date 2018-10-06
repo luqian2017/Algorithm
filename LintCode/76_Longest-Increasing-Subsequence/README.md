@@ -16,3 +16,4 @@ B = {-INF, 1, 3, INF}
 
 Then, we reverse search array B, and find the first element that is not INF - its position indicates the LIS result. In the example above, B[2] = 3, then LIS = 2.  
  
+Time complexity O(nlogn).

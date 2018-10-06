@@ -31,18 +31,11 @@ int longestIncreasingSubsequence(vector<int> & nums) {
     for (int i = 0; i < nums.size(); i++) {
         // find the first number in minLast >= nums[i]
         int index = binarySearch(minLast, nums[i]);
-        cout<<"i = "<<i<<" index = "<<index<<endl;
         minLast[index] = nums[i];
     }
 
     for (int i = nums.size(); i >= 1; i--) {
         if (minLast[i] != INT_MAX) {
-                //debug
-            cout<<"minLast: ";
-            for (int m = 0; m < minLast.size(); ++m)
-                cout<<minLast[m]<<" ";
-            cout<<endl;
-
             return i;
         }
     }
