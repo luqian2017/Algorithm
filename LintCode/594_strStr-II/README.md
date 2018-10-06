@@ -5,3 +5,6 @@ For example, source = "abcde", target = "cd".
 
 From source side, 
 hashcode(cd) = (hashcode(bc + d) - hashcode(b)*2 ) % BASE
+
+if the hashcode is negative, 
+then hashcode += BASE.
