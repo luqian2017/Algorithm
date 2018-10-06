@@ -1,7 +1,5 @@
 Solution 1:
-DP. 
-Without optimization, time complexity O(n^2).
-With optimization, time complexity (O(nlogn)).
+DP. Time complexity O(n^2).
 
 Solution 2:
 Binary Search.
