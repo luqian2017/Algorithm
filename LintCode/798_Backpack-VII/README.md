@@ -1,10 +1,10 @@
 Solution 1. Classical DP solution, based on 01 backpack problem.
 
 For the input 
-8
-[3,2]
-[300,160]
-[1,6]
+8  //n = money
+[3,2] //prices
+[300,160] //weight
+[1,6] //amounts
 
 The dp[][] is:
 0 0 0 0 0 0 0 0 0 
@@ -23,7 +23,7 @@ Note:
    
 2) Fot the three-layer loop, it is wrong to right it as follows:
       
-           for (int i = 1; i <= itemCount; ++i) { // i->item[i]
+        for (int i = 1; i <= itemCount; ++i) { // i->item[i]
             for (int j = 0; j <= amounts[i - 1]; ++j) { //j-> amount[0]..amount[i-1]
                 for (int k = 1; k <= n; k++) { //k->  1 .. n
                     dp[i][k] = dp[i - 1][k];
@@ -36,4 +36,4 @@ Note:
         }
 		
 	First, it wastes time as dp[i][k] = dp[i - 1][k]; as executed by the j loop which is unecessary.	
-	Second, dp[i][k] is updated incorrectly.
+	Second, dp[i][k] is updated by loop j incorrectly, it should be independeng of j loop.
