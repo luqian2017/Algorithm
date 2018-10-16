@@ -1,4 +1,16 @@
 Solution 1. Classical DP solution, based on 01 backpack problem.
+
+For the input 
+8
+[3,2]
+[300,160]
+[1,6]
+
+The dp[][] is:
+0 0 0 0 0 0 0 0 0 
+0 0 0 300 300 300 300 300 300 
+0 0 160 300 320 460 480 620 640 
+
 Note:
 1)
    dp[0..itemCount][0..n]
