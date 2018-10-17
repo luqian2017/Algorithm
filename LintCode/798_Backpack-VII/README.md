@@ -1,3 +1,4 @@
+Multi-choice backpack problem (i.e., each item can be carried multiple times until its count).
 Solution 1. Classical DP solution, based on 01 backpack problem.
 Time complexity O(NW): N is the total amount of all items (note each item may have several count). W is the money.
 Space complexity O(nW): n is the number of items (i.e., how many kinds of item). W is money.
