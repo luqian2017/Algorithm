@@ -55,6 +55,8 @@ Note:
             }
         }
 
+The reason is because in Solution 2, k is updating from big to small. We need to find an optimal candidate for dp[k]. Obviously, it is dp[k-prices[i-1]]+weight[i-1] as it is larger than p[k - j*prices[i - 1]] + j*weight[i - 1] (for j>1).
+
 2) In Solution 2, the j loop should start from 1, because the j loop is just used for counting the loop count. If starting from 0, then it count 1 more time.
 In Solution 1, the j loop can start from 0 or 1. If it starts from 0, it just wastes time to do 
 dp[i][k] = max(dp[i][k], dp[i - 1][k]);
