@@ -3,3 +3,8 @@ Write a program to swap odd and even bits in an integer with as few instructions
 
 Example
 5 = (101)2 => (1010)2 = 10
+
+Best solution:
+    int swapOddEvenBits(int x) {
+        return ((x & 0xaaaaaaaa) >> 1) | ((x & 0x55555555) << 1);
+    }
