@@ -11,4 +11,4 @@ Give s = "aabbbc", k = 3, return 3
 Explaination:
 we can get "aa", "bbb", "c" three substring.
 Notice
-n \leq 1e5n≤1e5
+n ≤ 1e5
