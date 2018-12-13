@@ -16,6 +16,6 @@ https://prismoskills.appspot.com/lessons/Arrays/Find_closest_elements_in_2_array
    Update the maxV and minDiff.
    pop the top, and push the candidate.
    Increment count.
-   If count > rLen * cLen, exit the loop
+   If one row's element reach the row's end, exit the loop
 3) return minDiff.
 
