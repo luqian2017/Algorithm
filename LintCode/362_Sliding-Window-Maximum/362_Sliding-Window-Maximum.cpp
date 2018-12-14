@@ -24,6 +24,7 @@ public:
             if (i - dq.front() == k) {
                 dq.pop_front();
             }
+            
             if (i >= k - 1) {
                 result.push_back(nums[dq.front()]);
             }
