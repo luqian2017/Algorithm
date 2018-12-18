@@ -18,28 +18,22 @@ public:
      * @param newInterval: new interval.
      * @return: A new interval list.
      */
-    vector<Interval> insert(vector<Interval> &intervals, Interval newInterval) {
-        int len = intervals.size();
-        vector<Interval> result;
-        if (len == 0) {
-          //  result.push_back(newInterval);
-            result.insert(result.begin(), newInterval);
-            return result;
-        }
-        
-        for (int i = 0; i < len; ++i) {
+    vector<Interval> insert(vector<Interval>& intervals, Interval newInterval) {
+        vector<Interval> res;
+        int n = intervals.size(), cur = 0;
+        for (int i = 0; i < n; ++i) {
             if (intervals[i].end < newInterval.start) {
-                result.push_back(intervals[i]);
+                res.push_back(intervals[i]);
+                ++cur;
             } else if (intervals[i].start > newInterval.end) {
-                result.push_back(intervals[i]);
+                res.push_back(intervals[i]);
             } else {
-                result.back().start = min(result.back().start, newInterval.start);
-                result.back().end = max(result.back().end, newInterval.end);
+                newInterval.start = min(newInterval.start, intervals[i].start);
+                newInterval.end = max(newInterval.end, intervals[i].end);
             }
         }
-        
-        return result;        
+        res.insert(res.begin() + cur, newInterval);
+        return res;
     }
-    
 };
 
