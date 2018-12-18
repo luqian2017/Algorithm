@@ -1,3 +1,4 @@
+
 /**
  * Definition of Interval:
  * classs Interval {
@@ -21,7 +22,8 @@ public:
         int len = intervals.size();
         vector<Interval> result;
         if (len == 0) {
-            result.push_back(newInterval);
+          //  result.push_back(newInterval);
+            result.insert(result.begin(), newInterval);
             return result;
         }
         
@@ -40,3 +42,4 @@ public:
     }
     
 };
+
