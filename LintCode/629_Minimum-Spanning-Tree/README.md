@@ -11,3 +11,8 @@ Return ["Acity","Bcity",1], ["Acity","Ccity",2]
 Notice
 Return the connections sorted by the cost, or sorted city1 name if their cost is same, or sorted city2 if their city1 name is also same.
 
+Solution:
+1. Prim algorithm.
+My solution still has issue to pass. The sum of the mst is the same as the stand solution, but the generated tree is lightly different. It might because the solution is not unique.
+
+2. Kruskal + union-find
