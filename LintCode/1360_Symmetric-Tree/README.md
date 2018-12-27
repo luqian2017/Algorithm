@@ -19,3 +19,6 @@ But the following {1,2,2,#,3,#,3} is not:
 Notice
 Bonus points if you could solve it both recursively and iteratively.
 
+Solution 1: Recursion
+
+Solution 2: Use BFS level-by-level traversal.
