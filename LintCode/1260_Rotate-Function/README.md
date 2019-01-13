@@ -19,5 +19,7 @@ So the maximum value of F(0), F(1), F(2), F(3) is F(3) = 26.
 Notice
 n is guaranteed to be less than 10^5.
 
-Solution:
-Use two same vectors concatenated. A+A.
+Solution 1:
+ Use two same vectors concatenated. A+A.
+Solution 2:
+ f[i] = f[i - 1] + sum - len * A[len - i]
