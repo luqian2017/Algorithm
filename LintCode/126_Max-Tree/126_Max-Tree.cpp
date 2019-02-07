@@ -23,17 +23,17 @@ public:
         if (len == 0) return NULL;
         
         stack<int> monoDecStack; // mono decreasing stack
-        map<int, TreeNode *> mp; // index, TreeNode *
+        vector<TreeNode *> pNodes(len, NULL); // index, TreeNode *
 
         for (int i = 0; i < len;  ++i) {
-            mp[i] = new TreeNode(A[i]);
+            pNodes[i] = new TreeNode(A[i]);
             while(!monoDecStack.empty() && (A[monoDecStack.top()] < A[i])) {
                 int oldTop = monoDecStack.top();
                 monoDecStack.pop();
-                mp[i]->left = mp[oldTop];
+                pNodes[i]->left = pNodes[oldTop];
             }
             if (!monoDecStack.empty() && (A[monoDecStack.top()] > A[i])) {
-                mp[monoDecStack.top()]->right = mp[i];
+                pNodes[monoDecStack.top()]->right = pNodes[i];
             }
             monoDecStack.push(i);
         }
@@ -44,6 +44,6 @@ public:
             monoDecStack.pop();
         }
      
-        return mp[lastOne];
+        return pNodes[lastOne];
     }
 };
