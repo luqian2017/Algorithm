@@ -12,4 +12,4 @@ It's guaranteed that the size of the array is greater or equal to k.
 
 Solution:
 1) Use prefix sum. O(MK). But it will exceed time limit
-2) 
+2) Use Binary Search.
