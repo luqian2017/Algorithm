@@ -9,7 +9,7 @@ public:
         int start = 1, mid = 0, end = len - 1;
         while (start + 1 < end) {
             mid = start + (end - start) / 2;
-            if (calCount(nums, mid) > mid) { // it shows the mid is to the left of the duplicate
+            if (calCount(nums, mid) > mid) {
                 end = mid;
             } else {
                 start = mid;
