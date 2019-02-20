@@ -21,8 +21,13 @@ public:
                 return vector<int>{rMid, index};
             }
         }
-        
-        return vector<int>();
+    
+        int rMaxIndex = findPeakInRow(A, rMax);
+        int rMinIndex = findPeakInRow(A, rMin);
+        if (A[rMin][rMinIndex] < A[rMax][rMaxIndex])
+            return vector<int>{rMax, rMaxIndex};
+        else
+            return vector<int>{rMin, rMinIndex};
     }
 
 private:
