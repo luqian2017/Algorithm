@@ -14,12 +14,12 @@ public:
         
         if (nums[0] > 0) {
             dpPosMax[0] = nums[0];
-            dpNegMin[0] = 0;
+         //   dpNegMin[0] = 0;
         }
 
         if (nums[0] < 0) {
             dpNegMin[0] = nums[0];
-            dpPosMax[0] = 0;
+          //  dpPosMax[0] = 0;
         }
         
         for (int i = 1; i < len; ++i) {
