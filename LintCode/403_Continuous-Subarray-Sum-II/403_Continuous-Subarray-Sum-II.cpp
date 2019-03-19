@@ -54,21 +54,11 @@ public:
             return vector<int>{gMaxStartIndex, gMaxEndIndex};
         } else {
             if (gMinStartIndex == 0 && gMinEndIndex == n - 1) {
-                int maxElem = INT_MIN;
-                int maxElemIndex = 0;
-                for (int i = 0; i < n; ++i) {
-                    if (maxElem < A[i]) {
-                        maxElem = A[i];
-                        maxElemIndex = i;
-                    }            
-                }
-                return vector<int>{maxElemIndex, maxElemIndex};
-                
+                return vector<int>{gMaxStartIndex, gMaxEndIndex};
             } else {
                 return vector<int>{(gMinEndIndex + 1) % n, (gMinStartIndex - 1 + n) % n};
             }
-        }
-        
-        
+        }       
     }
 };
+
