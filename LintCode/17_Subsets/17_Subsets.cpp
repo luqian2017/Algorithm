@@ -5,26 +5,28 @@ public:
      * @return: A list of lists
      */
     vector<vector<int>> subsets(vector<int> &nums) {
-        vector<vector<int>> vv;
-        int n = nums.size();
-
-        queue<vector<int>> q;
-        q.push({});  //push {}
+        vector<vector<int> > results;
+        vector<int> sol;
         
-        while(!q.empty()) {
-            vector<int> v = q.front();
-            q.pop();
-            vv.push_back(v);
-            
-            for (int i = 0; i < n; ++i) {
-                if (v.size() == 0 || v.back() < nums[i]) {
-                    vector<int> v2 = v;
-                    v2.push_back(nums[i]);
-                    q.push(v2);
-                }
-            }
+        if (nums.empty()) {
+          results.push_back(vector<int>());
+          return results;
         }
         
-        return vv;
+        sort(nums.begin(), nums.end());
+
+        helper(nums, 0, sol, results);
+        return results;
     }
+    
+    void helper(vector<int> &nums, int index, vector<int>&sol, vector<vector<int>> &results) {
+        
+        results.push_back(sol);
+        for (int i=index; i<nums.size(); ++i) {
+            sol.push_back(nums[i]);
+            helper(nums, i+1, sol, results);
+            sol.pop_back();
+        }
+    }
+
 };
