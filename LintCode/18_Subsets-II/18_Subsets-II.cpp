@@ -21,8 +21,7 @@ public:
         
         queue<vector<int>> q;
         q.push({});  //push {}
-        
-        int index = 0;
+
         while(!q.empty()) {
             vector<int> v = q.front();
             q.pop();
@@ -50,7 +49,7 @@ public:
                     }
                 }
             }
-            index++;
+
         }
         
         return vv;
