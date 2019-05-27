@@ -41,12 +41,6 @@ public:
         while (fracV) {
             if (fracBinStr.size() > 32) return "ERROR";
             
-            //important!!! do not use if (frav == 1)
-            if (abs(fracV - 1.0) < 1e-5) {
-                fracBinStr += '1';
-                break;
-            }
-            
             fracV *= 2;
             if (fracV >= 1) {
                 fracBinStr += '1';
