@@ -6,7 +6,7 @@ public:
      */
     int numTrees(int n) {
         if (n <= 1) return 1;
-        
+        //consider it as an equivalent # of out-stock sequence problem
         vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));  //dp[out][in]
         
         for (int i = 0; i <= n; ++i) dp[0][i] = 1;
