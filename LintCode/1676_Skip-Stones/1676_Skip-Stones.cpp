@@ -24,7 +24,6 @@ private:
     bool isValid(int n, int m, int target, vector<int> & d, int gap) {
         int count = 0, lastPos = 0;  
         for (int i = 0; i <= n; ++i) {
-            //if (count == m) break;
             if (d[i] - lastPos < gap) count++;
             else lastPos = d[i];
         }
