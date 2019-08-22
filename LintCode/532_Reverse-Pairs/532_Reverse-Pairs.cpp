@@ -17,8 +17,8 @@ public:
         }
         
         for (int i = 0; i < A.size(); ++i) {
-            result += sum(uniqLen) - sum(A[i]);
             add(A[i], 1);
+            result += sum(uniqLen) - sum(A[i]);
         }
         
         return result;
