@@ -27,10 +27,17 @@ No reverse pair
     }
 3. 注意去重，所以要用到unique()函数，非常有用。
 4. A[i]都要从1开始，C[]的size比A[]多1。
-5. 计算result的for循环里面的两行顺序可以互换。
-    result += sum(uniqLen) - sum(A[i]);
-    add(A[i], 1);
+5) 计算result的for循环里面的两行顺序可以互换。
+        for (int i = 0; i < A.size(); ++i) {
+            add(A[i], 1);
+            result += sum(uniqLen) - sum(A[i]);
+        }
+6） 上面必须只能用1个循环，这样每次result刚好加上A[i]对应的逆序数。不可以用2个循环，即将add(A[i],1)全部遍历完后再用另外一个for循环累加result。
 
 解法2：
+类似解法1，但是用brutal force构建类似C[]。时间复杂度O(n^2)。
+会超时。
+
+解法3：
 Merge Sort. 
 TBD.
