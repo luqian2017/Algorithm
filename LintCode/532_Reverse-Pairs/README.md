@@ -40,4 +40,3 @@ No reverse pair
 
 解法3：
 Merge Sort. 
-TBD.
