@@ -29,24 +29,26 @@ n <=1 0, m <= 10^9
 解法1：矩阵快速幂
 这题的意思就是求
 [0, 233, 2333, 23333,        ...]
-[X_0, ?,   ?,        ?,             ...]
-[X_1, ?,   ?,        ?,             ...]
+[X_0, ?,   ?,     ?,         ...]
+[X_1, ?,   ?,     ?,         ...]
 ...
-[X_(n-1), ?,   ?,        ?,       ...]
+[X_(n-1), ?,   ?,  ?,        ...]
+
 矩阵A(n+1行，n+1列)里面的第A(n,m)项的值，其中A(i,j)=A(i-1,j)+A(i,j-1).
 Example 1的output 就是：
 [0 233]
 [1 234]
+
 Example 2的output 就是
 [0 233 2333]
 [0 233 2366]
 [0 233 2799]
+
 这道题感觉很难。下面这个链接讲解得非常好：
 https://www.cnblogs.com/whatbeg/p/3971994.html
 
 分析如下。
 因为
-
 ```
 
 A(n,m)=A(n-1,m)+A(n,m-1)
@@ -57,7 +59,8 @@ A(n,m)=A(n-1,m)+A(n,m-1)
 ```
 即如下图所示（原出处为https://www.cnblogs.com/whatbeg/p/3971994.html）：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190915075433445.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3JvdWZvbw==,size_16,color_FFFFFF,t_70)
- 红色方块即A[n][m]，其值为绿色方块之和。
+
+红色方块即A[n][m]，其值为绿色方块之和。
 我们知道
  ```
  A(n,m) =A(0,m)+A(1,m-1)+A(2,m-1)+...+A(n,m-1)
@@ -79,6 +82,7 @@ A(0,m) = A(0,m-1) * 10 + 3, m>=2
 ```
 所以，对于m>=2，我们等价于求下面的矩阵运算。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190915080457138.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3JvdWZvbw==,size_16,color_FFFFFF,t_70)
+
 我们称上图的大矩阵为M的话，注意如果X维数为n, M的维数就是(n+2) * (n +2)。当m>=2时，
 
 ```
