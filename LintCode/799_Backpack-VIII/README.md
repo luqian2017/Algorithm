@@ -1,3 +1,20 @@
+Lintcode 440. Backpack III
+Given n kinds of items, and each kind of item has an infinite number available. The i-th item has size A[i] and value V[i].
+Also given a backpack with size m. What is the maximum value you can put into the backpack?
+Example
+Example 1:
+Input: A = [2, 3, 5, 7], V = [1, 5, 2, 4], m = 10
+Output: 15
+Explanation: Put three item 1 (A[1] = 3, V[1] = 5) into backpack.
+Example 2:
+Input: A = [1, 2, 3], V = [1, 2, 3], m = 5
+Output: 5
+Explanation: Strategy is not unique. For example, put five item 0 (A[0] = 1, V[0] = 1) into backpack.
+Notice
+You cannot divide item into small pieces.
+Total size of items you put into backpack can not exceed m.
+
+
 我开始觉得这就是多重背包问题的变种，但是解法1会超时。因为有3重循环，所以当amount[i]的值都很大就超时了。
 
 解法1：
