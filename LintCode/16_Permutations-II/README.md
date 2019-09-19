@@ -26,8 +26,8 @@ Using recursion to do it is acceptable. If you can do it without recursion, that
 解法1：
 
 这题跟Permutation那题的区别就是在于有重复元素，比如说
-input: {1,2,2}, 
-output: {{1,2,2},{2,1,2},{2,2,1}} 
+//input: {1,2,2}, 
+//output: {{1,2,2},{2,1,2},{2,2,1}} 
 
 所以关键在于去重。
 我们可以把2,2看成2个不同的2，先排序，然后根据nums[i]==nums[i-1]就可以知道重复元素出来了。我们的原则是保证前面的2排在后面的2前面，避免后面的2排在前面的2的前面，这样就可以去重了。 
