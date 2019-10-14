@@ -29,7 +29,7 @@ Input:
 Output:
 0
 Notice
-1 \leq n \leq 201≤n≤20
-k \leq nk≤n
+1≤n≤20
+k≤n
 There may be duplicate numbers in n numbers
 For the two solutions whose values correspond to the same, as long as there are different indexes, they can be regarded as two different solutions.
