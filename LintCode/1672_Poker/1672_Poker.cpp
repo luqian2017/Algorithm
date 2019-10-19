@@ -52,25 +52,26 @@ public:
         
         //check >=5 consequtives
         for (int i = 1; i <= 5; ++i) {
-           // cout<<"i="<<i<<endl;
+            cout<<"i="<<i<<endl;
             while(1) {
-                int conseqNum = 0;
-                int startNum = i;
-                
-                while(startNum <= 9 && mp[startNum] > 0) {
-                    startNum++;
-                    conseqNum++;
+              //  int conseqNum = 0;
+                int index = i;
+                if (mp[index] == 0) break;
+                cout<<"index="<<index<<" count="<<count<<endl;
+                while(index <= 9 && mp[index] > 0) {
+                    index++;
+                   // conseqNum++;
                 }
 
-                if (conseqNum >= 5) {
-                    for (int j = startNum; j <= startNum + conseqNum - 1; ++j) {
+                if (index - i >= 5) {
+                    for (int j = i; j < index; ++j) {
                         mp[j]--;
                     }
                     count++;
                 } else {
-                   // cout<<" i="<<i<<" not meet!"<<endl;
-                   break;
+                    break;
                 }
+                // cout<<" i="<<i<<" not meet!"<<endl;
             }
         }
         
@@ -78,7 +79,7 @@ public:
         for (int i = 1; i <= 9; ++i) {
             if (mp[i] > 1) {
                 mp[i] = 0;
-                cout<<"step2: i="<<i<<endl;
+                cout<<"step2: i="<<i<<" count="<<count<<endl;
                 count++;
             }
         }
@@ -87,15 +88,15 @@ public:
         for (int i = 1; i <= 9; ++i) {
             if (mp[i] == 1) {
                 mp[i] = 0;
-                cout<<"step3: i="<<i<<endl;
                 count++;
+                cout<<"step3: i="<<i<<" count="<<count<<endl;
             }
         }
         
         return count;
     }
 };
-
 [2, 2, 2, 3, 4, 5, 7, 1]
 [1, 2, 3, 4, 5, 5, 6, 7, 8, 9]
-[1,2,3,4,5,6,7,8,9,2]  //2?
+[1,2,3,4,5,6,7,8,9,2]  
+[6,4,8,3,6,5,8,7,4,2,5,5,4,6,1,1,4,7,5,9,6,8,6,6,4,7,4,5,2,7]    //8
