@@ -10,8 +10,8 @@ public:
         vector<int> dp(m + 1, 0);
         
         for (int i = 0; i < n; ++i) {
-            //for (int k = m; k >= A[i]; --k) {
-            for (int k = A[i]; k <= m; ++k) {
+            for (int k = m; k >= A[i]; --k) {
+            //for (int k = A[i]; k <= m; ++k) {    //wrong!!!
                 dp[k] = max(dp[k], dp[k - A[i]] + A[i]);
             }
         }
