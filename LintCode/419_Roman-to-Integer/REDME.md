@@ -22,5 +22,5 @@ http://baike.baidu.com/view/42061.htm
 
 解法1：基于map。
 注意Roman to Integer和Integer to Roman都maintain两个数组Roman[]和value[]。
-Integer to Roman: go through the Roman table (0..13)即可
+Integer to Roman: go through the integer, 每次看是否与Roman[0..13]匹配即可
 Roman to Integer: go through the string，每次看两个，不match就看一个。
