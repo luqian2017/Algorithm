@@ -26,3 +26,7 @@ Example 5:
 Input: "2e10"
 Output: true
 Explanation: "2e10" represents 20,000,000,000
+
+Solution:
+1) First getting rid of the leading and last empty chars. Get l and r.
+2) go through l..r, if digit, continue; otherwise, write down the location of dot and e.
