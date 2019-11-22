@@ -37,7 +37,8 @@ public:
             } 
             // the operator case +-*/
             else {
-                while(!st.empty() && priorityMp[st.top()] >= priorityMp[str]) {
+               // while(!st.empty() && priorityMp[st.top()] >= priorityMp[str]) {
+               while(!st.empty() && (!isOperator(str) || priorityMp[st.top()] >= priorityMp[str])) {
                     result.push_back(st.top());
                     st.pop();
                                 
