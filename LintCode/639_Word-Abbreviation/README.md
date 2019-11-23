@@ -23,3 +23,8 @@ Both n and the length of each word will not exceed 400.
 The length of each word is greater than 1.
 The words consist of lowercase English letters only.
 The return answers should be in the same order as the original array.
+
+注意：
+1）当遇到有duplidate时，就再往下进行一个字符，直到没有冲突为止。
+2）abbreviate() 应该是round + 2 >= word.size()就不用往下进行了。因为word会不断跟着round改变。如果仅仅用if (n <= 3)是不对的，因为interval和internal最后都是interv1l就不对了。
+3)abbrMap里面的旧result[i]不用删掉，其实vector()也不好删，也没有必要删。
