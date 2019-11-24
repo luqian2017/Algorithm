@@ -29,3 +29,10 @@ Notice
 1.The length of deadends will be in the range [1, 500].
 2.target will not be in the list deadends.
 3.Every string in deadends and the string target will be a string of 4 digits from the 10,000 possibilities '0000' to '9999'.
+
+解法1: BFS
+注意：
+1）每个状态对应BFS一个节点。
+2) 这题需要加visited，但是因为二维数组过大，我们不需要将visited定义为一个二维数组，将其定义为set即可。
+3) 要将deadends存成set，不然vector不好查询。 deadset里面有可能包含start节点"0000"，这种情况下直接返回-1。
+4) BFS查询过程中要过滤掉visited和deadset着两种情况。
