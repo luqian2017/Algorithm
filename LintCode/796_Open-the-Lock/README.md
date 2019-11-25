@@ -36,3 +36,7 @@ Notice
 2) 这题需要加visited，但是因为二维数组过大，我们不需要将visited定义为一个二维数组，将其定义为set即可。
 3) 要将deadends存成set，不然vector不好查询。 deadset里面有可能包含start节点"0000"，这种情况下直接返回-1。
 4) BFS查询过程中要过滤掉visited和deadset着两种情况。
+
+解法2: 双向BFS
+时间复杂度会更快。
+TBD。
