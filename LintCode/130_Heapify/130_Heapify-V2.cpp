@@ -11,9 +11,9 @@ public:
     }
     
 private:
-
+   // it the same as shiftDown()
     void min_heapify(vector<int> &A, int i, int len) {
-        while(1) {
+        while(2 * i + 1 < len) {
             int left = 2 * i + 1;
             int right = 2 * i + 2;
             int smallest = i;
