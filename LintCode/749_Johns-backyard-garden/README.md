@@ -24,3 +24,4 @@ x = 2 * 3 + 7:That is, you need two batch of 3 dm height bricks and one batch of
 Notice
 X is an integer, and it's range is [3, 1000].
 
+解法1: 完全背包变种。
