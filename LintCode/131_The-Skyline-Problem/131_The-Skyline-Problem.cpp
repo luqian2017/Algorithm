@@ -25,7 +25,7 @@ public:
         for (auto &a : h) {
             if (a.second < 0) m.insert(-a.second);  //only when it is beginning border, insert the border
             else m.erase(m.find(a.second)); //remove the ending border
-            cur = *m.rbegin(); //the highest one
+            cur = *m.rbegin(); //the highest one in multiset
             if (cur != pre) {
                 record.push_back({a.first, cur});
                 pre = cur;

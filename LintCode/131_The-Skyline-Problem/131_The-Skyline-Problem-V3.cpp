@@ -29,11 +29,11 @@ public:
      * @return: Find the outline of those buildings
      */
     vector<vector<int>> buildingOutline(vector<vector<int>> &buildings) {
-        vector<pair<int, int>> record;
         vector<Node> heights;
         
         multiset<int> m;
         int preHeight = 0, curHeight = 0;
+        int preTime = 0, curTime = 0;
         vector<vector<int>> res;
 
         for (auto &building : buildings) {
@@ -50,21 +50,16 @@ public:
             else m.erase(m.find(height.height)); //if ending border, erase one of the height from multiset
 
             curHeight = *m.rbegin(); //the highest height in multiset
-
+            
+            //each time if the current highest height in multiset is different from previous highest height, and preTime && preHeight > 0, record the segment.
             if (curHeight != preHeight) {
-                record.push_back({height.time, curHeight});
+                if (preTime != 0 && preHeight != 0) res.push_back({preTime, height.time, preHeight});
+                curTime = height.time;
                 preHeight = curHeight;
+                preTime = curTime;
             }
-        }
-
-        int n = record.size();
-
-        for (int i = 1; i < n; ++i) {
-            if (record[i - 1].second > 0) //do not consider the height 0 case
-                res.push_back({record[i - 1].first, record[i].first, record[i - 1].second});
         }
 
         return res;
     }
-
 };
