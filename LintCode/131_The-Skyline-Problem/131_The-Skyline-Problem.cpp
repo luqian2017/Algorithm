@@ -13,14 +13,19 @@ public:
             h.push_back({a[0], -a[2]});
             h.push_back({a[1], a[2]});
         }
+
+        //sorting, 
+        //1) if two time are the same, but different time type, the starting time is ahead of ending time
+        //2) if two time are the same, and are both starting time, then higher building first
+        //3) if two time are the same, and are both ending time, then lower building first
+        //4) if two time are different, smaller time first
         sort(h.begin(), h.end());
         m.insert(0);
-        int savedTime = 0;
 
         for (auto &a : h) {
-            if (a.second < 0) m.insert(-a.second);
-            else m.erase(m.find(a.second));
-            cur = *m.rbegin();
+            if (a.second < 0) m.insert(-a.second);  //only when it is beginning border, insert the border
+            else m.erase(m.find(a.second)); //remove the ending border
+            cur = *m.rbegin(); //the highest one
             if (cur != pre) {
                 record.push_back({a.first, cur});
                 pre = cur;
