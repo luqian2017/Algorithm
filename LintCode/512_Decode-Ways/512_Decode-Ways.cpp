@@ -15,7 +15,7 @@ public:
         for (int i = 2; i <= n; ++i) {
             int curDigit = s[i - 1] - '0';
             if (curDigit >= 1 && curDigit <= 9) {
-                dp[i] += dp[i - 1];
+                dp[i] += dp[i - 1]; //dp[i] = dp[i - 1] is also OK.
             }
             
             //int cur2Digits = stoi(to_string(s[i - 2] + s[i - 1]));
