@@ -44,3 +44,14 @@ The buildings are look like this in the picture. The yellow part is buildings.
 Notice
 Please merge the adjacent outlines if they have the same height and make sure different outlines cant overlap on x-axis.
 
+解法1：这题不容易。思路参考自网上。注意这题一定只要比较每个building的开始时间，不能把开始时间和结束时间混在一起。
+
+1) 用multiset(相当于最大堆)，存储buildings的高度。
+2) 遍历buildings，每次当building的起始位置时进堆，结束位置时出堆。
+3) 当本次heap的最大值与上次记录heap的最大值不一致(不管是变大还是变小)时，检查上次heap记录的最大值的高度和时间，若都非0，则记录{preTime, curTime, preHeight}，同时更新curTime, preHeight, preTime。
+4) multiset一定要先插入一个0，不然堆可能为空。
+5) buildings排序有讲究:
+    a) if two time are the same, but different time type, the starting time is ahead of ending time
+    b) if two time are the same, and are both starting time, then higher building first
+    c) if two time are the same, and are both ending time, then lower building first
+    d) if two time are different, smaller time first
