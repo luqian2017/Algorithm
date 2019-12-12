@@ -22,10 +22,9 @@ public:
         vector<int> global(k + 1);
         vector<int> local(k + 1);
         
-        for (int i = 0; i < prices.size() - 1; ++i) {
-            int diff = prices[i + 1] - prices[i];
+        for (int i = 1; i < n; ++i) {
             for (int j = k; j >= 1; --j) {
-               local[j] = max(global[j - 1], local[j]) + diff;
+               local[j] = max(global[j - 1], local[j]) + prices[i] - prices[i - 1];;
                global[j] = max(global[j], local[j]);
             }
         }
