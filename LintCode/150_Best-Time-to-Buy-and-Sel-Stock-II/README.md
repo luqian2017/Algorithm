@@ -1,5 +1,5 @@
 150. Best Time to Buy and Sell Stock II
-中文English
+
 Given an array prices, which represents the price of a stock in each day.
 
 You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, if you already have the stock, you must sell it before you buy again).
