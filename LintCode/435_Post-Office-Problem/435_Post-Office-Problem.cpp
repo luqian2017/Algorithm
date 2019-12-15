@@ -37,7 +37,7 @@ public:
 
         for (int i = 1; i <= k; ++i) {
             for (int j = i + 1; j <= n; ++j) {
-                for (int z = 1; z <= j; ++z) {
+                for (int z = 1; z <= j - i + 1; ++z) {
                     dp[j][i] = min(dp[j][i], dp[j - z][i - 1] + sumDis[j - z][j - 1]);
                 }
             }
