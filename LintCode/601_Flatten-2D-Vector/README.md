@@ -11,3 +11,12 @@ Example 2:
 
 Input:[[7,9],[5]]
 Output:[7,9,5]
+
+
+注意这题不能用一个2D vector的copy，不然空间不满足要求。
+解法1：利用C++的iterator
+这题学到了很多iterator的知识。
+1) 一维和二维vector都有iterator，一维vector的iterator就好比指向每个元素的指针，二维vector的iterator就好比指向其中每个一维vector的指针。
+2) 空的一维和二维vector的begin()和end()相等。
+3) *(iter++)先返回*iter，然后iter++。
+跟*(i++)一回事。
