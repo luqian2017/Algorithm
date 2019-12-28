@@ -54,10 +54,12 @@ public:
 
             for (int j = result[0] - 1; j >= 0; --j) {
                 if (A[j] == A[result[0]]) result[0] = j;
+                else break;
             }
             
             for (int j = result[1] - 1; j >= 0; --j) {
                 if (B[j] == B[result[1]]) result[1] = j;
+                else break;
             }
         }
         return result;
