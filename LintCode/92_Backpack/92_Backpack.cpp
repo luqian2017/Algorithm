@@ -19,3 +19,26 @@ public:
         return dp[m];
     }
 };
+
+
+//or use the following solution
+class Solution {
+public:
+    /**
+     * @param m: An integer m denotes the size of a backpack
+     * @param A: Given n items with size A[i]
+     * @return: The maximum size
+     */
+    int backPack(int m, vector<int> &A) {
+        int n = A.size();
+        vector<int> dp(m + 1, 0);
+        
+        for (int i = 1; i <= n; ++i) {
+            for (int j = m; j >= 0; --j) {
+                if (j >= A[i - 1]) dp[j] = max(dp[j], dp[j - A[i - 1]] + A[i - 1]); 
+            }
+        }
+        
+        return dp[m];
+    }
+};
