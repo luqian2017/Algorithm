@@ -11,7 +11,7 @@ public:
         
 
         map<vector<int>, vector<string>> mp;   
-        //map<map<string, int>, vector<string>> mp;
+        //map<map<char, int>, vector<string>> mp;
         
         for (int i = 0; i < n; ++i) {
             vector<int> dict(26, 0);
