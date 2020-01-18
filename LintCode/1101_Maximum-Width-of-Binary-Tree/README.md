@@ -57,3 +57,6 @@ Output: 8
 Explanation:The maximum width existing in the fourth level with the length 8 (6,#,#,#,#,#,#,7).
 Notice
 The answer will be in the range of 32-bit signed integer.
+
+解法2：
+注意节点的值没有什么用，可以用来存序号。根节点序号为i,则其左节点序号为2*i，右节点序号为2*i+1。每次把queue中的q.back()-q.front()+1算出来与gMaxWidth比较即可。

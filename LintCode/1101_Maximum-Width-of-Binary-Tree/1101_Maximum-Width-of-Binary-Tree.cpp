@@ -49,6 +49,10 @@ public:
                 if (validArray[i] == 1) break;
                 else maxWidth--;
             }
+            for (int i = 0; i < validArray.size(); ++i) {
+                if (validArray[i] == 1) break;
+                else maxWidth--;
+            }
             gMaxWidth = max(gMaxWidth, maxWidth);
         }
         
