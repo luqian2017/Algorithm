@@ -1,10 +1,5 @@
 
-bool compare(const vector<int> & a, const vector<int> & b)  {
-    if (a[0] < b[0]) return true;
-    if (a[0] == b[0]) return a[1] < b[1];
-    return false;
-}
-    
+
 class Solution {
 public:
     /**
@@ -28,4 +23,11 @@ public:
         
         return dp[m - 1];        
     }
+
+private:
+static bool compare(const vector<int> & a, const vector<int> & b)  {
+    if (a[0] < b[0]) return true;
+    if (a[0] == b[0]) return a[1] < b[1];
+    return false;
+}
 };
