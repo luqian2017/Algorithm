@@ -6,7 +6,7 @@ public:
      * @return: [index1, index2] (index1 < index2)
      */
     vector<int> twoSum(vector<int> &numbers, int target) {
-        map<int, int> m;   // <number, index>
+        unordered_map<int, int> m;   // <number, index>
         vector<int> result;
         int len = numbers.size();
         for (int i = 0; i < len; ++i) {
