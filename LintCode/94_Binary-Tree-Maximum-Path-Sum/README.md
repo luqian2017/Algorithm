@@ -20,3 +20,11 @@ Example 2:
 	Output: 6
 
 	
+	
+解法1：递归，即divide and conquer
+思路：
+1) if leftSum >= 0, rightSum >= 0, 取max(leftSum, rightSum) + root->val
+2) if leftSum和rightSum只有一边>0，取其与root->val的和。  
+3) if leftSum < 0, rightSum < 0, 直接返回root
+4) 同时我们要考虑到左，中，右为一条路径的情况，比如说{1,2,3}，所以
+        gMaxSum = max(gMaxSum, max(leftSum + rightSum + root->val, result));
