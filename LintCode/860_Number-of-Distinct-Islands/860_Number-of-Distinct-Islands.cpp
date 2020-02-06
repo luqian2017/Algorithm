@@ -22,7 +22,7 @@ public:
                 while(!q.empty()) {
                     pair<int, int> top = q.front();
                     q.pop();
-                    for (int i = 0; i < 3; ++i) {
+                    for (int i = 0; i < 4; ++i) {
                         int newX = top.first + dx[i];
                         int newY = top.second + dy[i];
                         if (newX >= 0 && newX < rowSize && newY >= 0 && newY < colSize && grid[newX][newY] == 1) {
