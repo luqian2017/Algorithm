@@ -39,7 +39,7 @@ An empty tree is represented by "" instead of "()".
 2) 以input="-4(2(3)(1))(6(5)(7))"为例，
 第一轮：root = -4, leftStr=2(3)(1), rightStr=6(5)(7)
 第二轮：root = 2, leftStr = 3, rightStr = 1
-root = 6, leftStr = 5, rightStr = 7
+root = 6, leftStr = 5, rightStr =
 3) str2tree的入口参数为string &s，注意这里有个引用，所以不能直接用rootNode->left = s.substr(…)，因为s.substr()返回一个const。解决办法有两个：
 方法1：如下面代码所示，定义临时变量leftStr, rightStr
 方法2：定义一个helper(stinrg &s, int start, int end)，这样string s永远不变，通过返回开始和终点位置来达到substr的效果。
