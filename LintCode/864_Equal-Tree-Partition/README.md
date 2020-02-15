@@ -36,3 +36,9 @@ Notice
 The range of tree node value is in the range of [-100000, 100000].
 1 <= n <= 10000
 You can assume that the tree is not null
+
+
+解法1：DFS。判断某非根节点下面的sum为totalSum的一半就行了。
+注意：
+1) totalSum可能为0，所以空节点不能存0到sums数组中。
+2) for循环到< sums.size() - 1就可以了，因为只需要考虑非根节点。
