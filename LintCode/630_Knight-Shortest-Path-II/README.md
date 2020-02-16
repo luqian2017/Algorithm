@@ -24,3 +24,9 @@ If the knight is at (x, y), he can get to the following positions in one step:
 (x - 1, y + 2)
 (x + 2, y + 1)
 (x - 2, y + 1)
+
+解法1: BFS
+
+解法2: DP
+注意此处行方向可上可下，而列方向只能往右，所以先列循环在外，再行循环在内，即对每列，行要全部遍历一遍。
+也就是说，执行到列j时，需要保证所有的行0..m都遍历过了，才能保证dp[i][j]能够在dp[0..n][j-1]的可行解中找到最大值。
