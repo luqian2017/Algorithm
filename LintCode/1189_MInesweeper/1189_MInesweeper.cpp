@@ -30,7 +30,7 @@ public:
                     int newY = y + j;
                     if (newX < 0 || newX >= m || newY < 0 || newY >= n) continue;
                     if (board[newX][newY] == 'M') mineCount++;
-                    else if (board[newX][newY] == 'E' && mineCount == 0) neighborNodes.push_back({newX, newY});
+                    else if (board[newX][newY] == 'E') neighborNodes.push_back({newX, newY});
                 }
             }
             

@@ -1,10 +1,10 @@
-
 class Node {
 public:
-    Node(int k, int v) : key(k), val(v), prev(nullptr), next(nullptr) { }
-    int key, val;
     Node *prev;
     Node *next;
+    int key;
+    int val;
+    Node(int k = 0, int v = 0) : key(k), val(v), prev(NULL), next(NULL) {}
 };
 
 class LRUCache {
@@ -14,8 +14,8 @@ public:
     */
     LRUCache(int capacity) {
         this->capacity = capacity;
-        this->head = new Node(0, 0);
-        this->tail = new Node(0, 0);
+        this->head = new Node;  //dummy node
+        this->tail = new Node;  //dummy node
         head->next = tail;
         tail->prev = head;
     }
@@ -26,12 +26,11 @@ public:
      */
     int get(int key) {
         if (mp.find(key) == mp.end()) return -1;
-        
-        Node *pNode = mp[key];
-        pNode->prev->next = pNode->next;
-        pNode->next->prev = pNode->prev;
-        moveToTail(pNode);
-        return pNode->val;
+        Node *findNode = mp[key];
+      //  findNode->prev->next = findNode->next;
+      //    findNode->next->prev = findNode->prev;
+        moveToTail(findNode);
+        return findNode->val;
     }
 
     /*
@@ -42,32 +41,31 @@ public:
     void set(int key, int value) {
         if (mp.find(key) != mp.end()) {
             mp[key]->val = value;
-            mp[key]->prev->next = mp[key]->next;
-            mp[key]->next->prev = mp[key]->prev;
             moveToTail(mp[key]);
             return;
-        }
-        
-        if (mp.size() == capacity) {
-            mp.erase(head->next->key);    //here we need to use the key field in the Node class
+        } else if (mp.size() == capacity) { //LRU full, remove the least used node
+            mp.erase(head->next->key);
             head->next = head->next->next;
             head->next->prev = head;
         }
         
-        Node *pNode = new Node(key,  value);
-        mp[key] = pNode;
-        moveToTail(pNode);
+        Node * node = new Node(key, value);
+        mp[key] = node;
+        moveToTail(node);
     }
     
-    void moveToTail(Node *p) {
-        p->prev = tail->prev;
-        p->next = tail;
-        tail->prev->next = p;
-        tail->prev = p;
-    }
-
 private:
-    int capacity;
-    Node *head, *tail;
-    map<int, Node*> mp;
+   Node *head, *tail;
+   int capacity;
+   map<int, Node *> mp;
+   
+   void moveToTail(Node * node) {
+       if (node->prev) node->prev->next = node->next;
+       if (node->next) node->next->prev = node->prev;
+       
+       node->prev = tail->prev;
+       tail->prev->next = node;
+       tail->prev = node;
+       node->next = tail;
+   }
 };
