@@ -16,3 +16,10 @@ Example 2:
 Input："a"，[]
 Output：[]
 Explanation：dict is null.
+
+
+解法1：DFS+Memorization
+把s按pos=1,2,...,len-1切成2半，如果前半部subStr1在dict里面， 那么后半部subStr2就可以按子问题处理。
+注意要Memorization，不然过不了下面的input case:
+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
