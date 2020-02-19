@@ -24,3 +24,9 @@ All words have the same length.
 All words contain only lowercase alphabetic characters.
 You may assume no duplicates in the word list.
 You may assume beginWord and endWord are non-empty and are not the same.
+
+解法1：
+BFS分层遍历，每次改动一个字符。
+注意：
+1）每次生成的string和dict里面的单词匹配的时候把string放入queue，同时dict里面对应的单词要**删掉**，不然会陷入死循环。
+2)  for循环里面每次操作完后要把curWord[j]=curChar改回去。
