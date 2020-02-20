@@ -1,5 +1,5 @@
 554. Sort Integers (Map Reduce)
-中文English
+
 Sort integers by Map Reduce framework.
 In the mapper, key is the document id which can be ignored, value is the integers.
 
@@ -23,3 +23,4 @@ Input:
 Output:
 [7,14]
 
+v
