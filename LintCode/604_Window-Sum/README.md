@@ -1,5 +1,5 @@
 604. Window Sum
-中文English
+
 Given an array of n integers, and a moving window(size k), move the window at each iteration from the start of the array, find the sum of the element inside the window at each moving.
 
 Example
