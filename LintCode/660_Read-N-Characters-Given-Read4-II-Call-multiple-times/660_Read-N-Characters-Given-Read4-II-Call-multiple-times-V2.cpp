@@ -13,17 +13,16 @@ public:
         int readCount = 0;
         while(readCount < n) {
             if (readPos == 0) {
-                writePos = read4(buff);
+                bytesRead = read4(buff);
             }
             
-            if (writePos == 0) break; // reach the end of the file
-            
-            while(readCount < n && readPos < writePos) {
+            while(readCount < n && readPos < bytesRead) {
                 buf[readCount++] = buff[readPos++];
             }
             
-            if (readPos == writePos) readPos = 0;
-            if (writePos < 4) break; // no need to continue to call read4() again
+            if (readPos == bytesRead) readPos = 0;
+
+            if (bytesRead < 4) break; // no need to continue to call read4() again
         }
         
 
@@ -32,6 +31,6 @@ public:
 
 private:
     char buff[4];   
-    int writePos = 0;
+    int bytesRead = 0;
     int readPos = 0;
 };
