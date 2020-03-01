@@ -15,7 +15,7 @@ public:
             if (readPos == writePos) {
                 writePos = read4(buff);
                 readPos = 0;
-                if (writePos == 0) return i;
+                if (writePos == 0) return i;   //reach the end of the file
             }
             
             buf[i] = buff[readPos++];
