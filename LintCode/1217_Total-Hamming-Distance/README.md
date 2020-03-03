@@ -23,3 +23,7 @@ Notice
 Elements of the given array are in the range of 0 to 10^9
 Length of the array will not exceed 10^4.
 
+
+解法1：
+这题最直接的做法就是按每个位把n个数分为2组，一组是该位为1的，另一组是该位为0的。
+对于该位而言，其产生的hamming distance是total1Count * total0Count，因为1组每个成员跟0组每个成员都有1个链接。
