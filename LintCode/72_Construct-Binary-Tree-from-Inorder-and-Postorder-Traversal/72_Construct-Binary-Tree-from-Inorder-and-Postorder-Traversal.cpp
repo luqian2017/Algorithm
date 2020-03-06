@@ -23,7 +23,7 @@ public:
     }
 private:
     TreeNode * helper(vector<int> &inorder, int inStart, int inEnd, vector<int> &postorder, int postStart, int postEnd) {
-        if (inStart > inEnd || inEnd < 0 || postEnd < 0) {
+        if (inStart > inEnd) {
             return NULL;
         }
         
