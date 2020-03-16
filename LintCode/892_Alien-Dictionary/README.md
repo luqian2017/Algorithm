@@ -29,3 +29,6 @@ There may be multiple valid order of letters, return the smallest in normal lexi
 
 解法1：
 topologial sorting.
+注意:
+1) 要用priority queue，因为结果有顺序。而且要用minHeap!
+2) 建图时把word[i]和word[i+1]比较，从头开始比，碰到第一个不同的字符就返回。
