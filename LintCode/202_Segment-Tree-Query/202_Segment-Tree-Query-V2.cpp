@@ -22,19 +22,19 @@ public:
      * @return: The maximum number in the interval [start, end]
      */
     int query(SegmentTreeNode * root, int start, int end) {
-        if (!root) return 0;
+        if (start == root->start && end == root->end) {
+            return root->max;
+        }
         
-        if (start <= root->start && end >= root->end) return root->max;
         int mid = root->start + (root->end - root->start) / 2;
-        int result = 0;
+        int leftMax = INT_MIN, rightMax = INT_MIN;
         if (start <= mid) {
-            result = max(result, query(root->left, start, min(mid, end)));
+            leftMax = query(root->left, start, min(mid, end));   //note it is min
         }
-        if (mid + 1 <= end) {
-            result = max(result, query(root->right, max(mid + 1, start), end));            
+        if (end >= mid + 1) {
+            rightMax = query(root->right, max(mid + 1, start), end); //note it is max
         }
-        
-        return result;
+        return max(leftMax, rightMax);
     }
 };
 
