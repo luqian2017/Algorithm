@@ -16,3 +16,21 @@ output:[[1,4,1],[2,2,2],[1,4,2]]
 
 Notice
 0<m,n<1000
+
+解法1：BFS
+
+思路跟Zombie那题很像，都是从destinations的几个节点开始进queue。
+
+注意:
+
+1) 因为BFS是从destination往empty的节点找，所以上下左右的权值要反过来。
+
+2) 可以直接把权值(2,3,4,5)写到grid[][]里面去。
+
+3) round[i][j]表示grid[i][j]最早是在第几轮更新的。
+
+4) 因为同一轮中，某个empty节点可能会被多个destination节点扩展到，所以要根据权值决定要不要覆盖。
+
+                            if (dirMarks[j] < grid[newX][newY]) { 
+                                grid[newX][newY] = dirMarks[j];
+                            }
