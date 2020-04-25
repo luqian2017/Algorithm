@@ -25,3 +25,8 @@ Could you solve it in O(nk)?
 Notice
 All costs are positive integers.
 
+解法1：DP。第3层循环遍历colors，在跟当前color不同的color中找最小值。时间复杂度O(n^3)和空间复杂度O(n^2)都太高。
+解法2：改进版。只需保存前次节点的最小值和第二小的值和其对应的colors即可，如果当前color和前次节点的最小值对应的color一样，则取前次节点的第二小的值，否则取前次节点的最小值。
+时间复杂度O(n^2)，空间复杂度还是O(n^2)。
+解法3：类似解法2，但不用二维数组了，因为只需要保存前次节点的4个值即可(min1_id, min2_id, min1_v, min2_v)。
+时间复杂度O(n^2)，空间复杂度O(1)。
