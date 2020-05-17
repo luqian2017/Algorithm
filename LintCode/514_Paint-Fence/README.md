@@ -30,4 +30,9 @@ Explanation:
 Notice
 n and k are non-negative integers.
 
-
+解法1：
+这题设计得不错，我是参考网上的思路。
+i = 0时，result = 0; i = 1时，result = k。
+我们从左往右看，每个post的可刷方案包括2类(result = diff+same)，diff就是跟前面post不同的颜色方案，same就是跟前面post相同颜色的方案。
+从i=2开始，post i的diff很好算，就是post i-1的result * (k - 1)，即post i-1可以刷4种颜色，那么对于4种颜色里的每一种，post i可以有3种选择。
+那么post i 的same怎么算呢? 因为post i跟post i-1颜色一样的话，那么post i-1和post i-2必须颜色不一样。也就是post i的same就是post i-1的diff。
