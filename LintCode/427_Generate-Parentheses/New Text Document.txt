@@ -1,0 +1,48 @@
+class Solution {
+public:
+    /**
+     * @param n: n pairs
+     * @return: All combinations of well-formed parentheses
+     */
+    vector<string> generateParenthesis(int n) {
+        string sol = "";
+        set<string> sols;
+        dfs(2 * n, 0, sols, sol);
+        vector<string> result(sols.begin(), sols.end());
+        return result;
+    }
+    
+private:
+    bool validParenthesis(string &sol) {
+        stack<char> s;
+        int n = sol.size();
+        for (int i = 0; i < n; ++i) {
+            if (sol[i] == '(') s.push(sol[i]);
+            else if (sol[i] == ')') {
+                if (s.empty()) return false;
+                s.pop();
+            }
+        }
+        if (!s.empty()) return false;
+        return true;
+    }
+    
+    void dfs(int n, int pos, set<string> & sols, string & sol) {
+        if (pos == n) {
+            if (validParenthesis(sol)) {
+                sols.insert(sol);
+            }
+            return;
+        }
+        
+        for (int i = pos; i < n; ++i) {
+            sol.push_back('(');
+            dfs(n, pos + 1, sols, sol);
+            sol.pop_back();
+            
+            sol.push_back(')');
+            dfs(n, pos + 1, sols, sol);
+            sol.pop_back();
+        }
+    } 
+};
