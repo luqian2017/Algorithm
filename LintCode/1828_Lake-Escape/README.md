@@ -36,3 +36,20 @@ Notice
 It is guaranteed
 ∣albert_row−kuna_row∣+∣albert_column−kuna_column∣>0。
 
+
+解法1：
+
+这道题感觉比较难。我起初的想法是用2步BFS(第1步先找狗，第2步离开)，但代码很冗长。后来看了标准答案发现用一次BFS就可用了，但要分2种状态(find dog or not)来处理。
+
+注意：
+1) visit数组为3维vector，第1维表示find dog or not，第2，3维分别代表map的x,y值。
+2) queue也是3维，定义成pair中加pair。
+3) 这题因为有个特殊条件就是一旦遇到冰面，可以就着原来方向一直滑下去，所以加了个
+ for (int j = 0; j <= side_length; ++j) 
+循环。如果里面遇到狗了当越界或遇到snow bank或hole就退出。注意如果找到狗了肯定也是在snow bank上面，可以同时更新2个状态并退出。
+4) 退出来后就看现在是什么情况:
+Case 1: 如果找到狗了又越界了就返回true。
+Case 2: 如果没越界又遇到雪堆，则加入新节点，新节点的状态按find_dog_flag来处理。
+还有其他状态如下，都属于不考虑的情况，继续循环即可。
+Case 3: 越界了没找到狗
+Case 4: 没越界又没碰到雪堆(snow bank)，那就是掉到雪坑(snow hole)里了。
