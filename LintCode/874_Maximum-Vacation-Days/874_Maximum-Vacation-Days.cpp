@@ -9,7 +9,7 @@ public:
         int N = flights.size();  //# of city
         int K = days[0].size();  //# of week
         
-        vector<vector<int>> dp(N + 1, vector<int>(K + 1, INT_MIN)); //dp[i][j] - the max vacation days of the ith city in the jth week
+        vector<vector<int>> dp(N + 1, vector<int>(K + 1, INT_MIN)); //dp[j][i] - the max vacation days of the jth city in the ith week
         dp[1][0] = 0;
         for (int i = 1; i <= K; ++i) {
             for (int j = 1; j <= N; ++j) {

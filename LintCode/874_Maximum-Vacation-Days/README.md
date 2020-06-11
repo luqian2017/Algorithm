@@ -50,3 +50,23 @@ In the matrix days, all the values are integers in the range [0, 7].
 You could stay at a city beyond the number of vacation days, but you should work on the extra days, which won't be counted as vacation days.
 If you fly from the city A to the city B and take the vacation on that day, the deduction towards vacation days will count towards the vacation days of city B in that week.
 We don't consider the impact of flight hours towards the calculation of vacation days.
+
+解法1：DP。
+
+这题不容易。即使知道了DP的算法也还是有些边界条件难调。
+思路：
+1) N为城市数，K为周数。DP[j][i] 表示第j个城市在第i周的最大vacation days。i和j都从1开始。
+2) 关键的DP算法在：
+第j个城市在第i周最大vacation days取决于1)在城市i本来可以呆的天数; 和2)飞去其他城市p可以呆的天数 两者之间的最大值。
+
+if (p == j || flights[p - 1][j - 1]) {
+    dp[j][i] = max(dp[j][i], dp[p][i - 1] + days[j - 1][i - 1]);
+}
+
+3) DP结束后遍历所有城市，找最大的DP[i][K]即可。
+4) 为什么DP[][]要初始话为INT_MIN? 因为这个算法考虑可以从任何城市开始，而题目规定只能从城市0开始。如果初始化为0的话，加入输入为
+[[0,0,0],[0,0,0],[0,0,0]]
+[[1,1,1],[7,7,7],[7,7,7]]
+那么城市1和2只要不动，就可以实现21天的vacation，但实际上正确值是城市0的3。
+如果初始化为INT_MIN，那么因为DP[1][0]初始化为了0，所以城市0会取胜。
+5) DP[1][0]必须初始化为0，原因见4)。
