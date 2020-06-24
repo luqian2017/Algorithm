@@ -11,30 +11,25 @@ public:
             distribution[ages[i]]++;
         }
         
+        vector<int> presums(151, 0);
+        for (int i = 1; i < 151; ++i) {
+            presums[i] = presums[i - 1] + distribution[i];
+        }
+        
         int reqCount = 0;
         for (int i = 1; i <= 100; ++i) {
             if (distribution[i] == 0) continue;
             int lowLimit = i / 2 + 7;
             if (i > lowLimit) {
                 reqCount += distribution[i] * (distribution[i] - 1);
-                int addCount = 0;
-                for (int j = lowLimit + 1; j < i; ++j) {
-                    if (distribution[j] == 0) continue;
-                    addCount += distribution[j];
-                }
-                reqCount += addCount * distribution[i];
+                reqCount += (presums[i - 1] - presums[lowLimit]) * distribution[i];    
             }
         }
 
         for (int i = 101; i <= 150; ++i) {
             if (distribution[i] == 0) continue;
             reqCount += distribution[i] * (distribution[i] - 1);
-            int addCount = 0;
-            for (int j = 100; j < i; ++j) {
-                if (distribution[j] == 0) continue;
-                addCount += distribution[j];
-            }
-            reqCount += addCount * distribution[i];
+            reqCount += (presums[i - 1] - presums[99]) * distribution[i];
         }
         
         return reqCount;
