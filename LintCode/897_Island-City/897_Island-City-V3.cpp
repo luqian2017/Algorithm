@@ -13,8 +13,8 @@ public:
           // initialize
           for (int i = 0; i < m; ++i) {
               for (int j = 0; j < n; ++j) {
-                  father[i * m + j] = i * m + j;
-                  hasCity[i * m + j] = grid[i][j] == 2 ? true : false;
+                  father[i * n + j] = i * n + j;
+                  hasCity[i * n + j] = grid[i][j] == 2 ? true : false;
                   if (grid[i][j] == 2) count++;
               }
           }
@@ -24,11 +24,11 @@ public:
               for (int j = 0; j < n; ++j) {
                   if (grid[i][j] != 0) {
                       if (i + 1 >= 0 && i + 1 < m && j >= 0 && j < n && grid[i + 1][j] != 0) {
-                          add(i * m + j, (i + 1) * m + j);
+                          add(i * n + j, (i + 1) * n + j);
                       }
                       
                        if (i >= 0 && i < m && j + 1 >= 0 && j + 1 < n && grid[i][j + 1] != 0) {
-                          add(i * m + j, i * m + j + 1);
+                          add(i * n + j, i * n + j + 1);
                       }
                   }
               }
@@ -44,7 +44,8 @@ private:
     
     int find(int x) {
         if (father[x] == x) return x;
-        return father[x] = find(father[x]);
+        father[x] = find(father[x]);
+        return father[x];
     }
     
     void add(int a, int b) {
