@@ -53,10 +53,11 @@ public:
                           int newY = j + dy[k];
                           if (newX >= 0 && newX < m && newY >= 0 && newY < n && matrix[newX][newY] != 0) {
                               int newRoot = find(newX * n + newY);
-                              if (area[newX * n + newY] > 0 && roots.find(newRoot) == roots.end()) {
+                              if (area[newRoot] > 0 && roots.find(newRoot) == roots.end()) {
                                   roots.insert(newRoot);
                                   count += area[newRoot];
                               }
+                                  
                           }
                       }
                       result = max(result, count);
