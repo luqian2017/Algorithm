@@ -22,3 +22,7 @@ Notice
 1 ≤ len(nums) ≤ 1e4，1 ≤ limit ≤ 1e6，0 ≤ nums[i] ≤ 1e6
 Since the answer may be too large, return it modulo 99997867.
 
+解法1：这题本来可以用DP，但DP可能要O(N^2)，而这里数据量太大，所以采用双指针。
+
+思路，p2先行。当nums[p2]-nums[p1]>limit时，说明p1..p2这个range还不符合要求，所以p1必须++，当p1符合条件后跳出while循环，此时我们可以看出，p1, p1+1, ... p2这个range，p2固定，p1..p2-1里面任取2数都可以满足3数之中任意之差的绝对值<=limit，所以count+=((p2 - p1) * (p2 - p1 - 1) / 2)。这里采用组合C(x,2)的算法。
+注意中间要取模。
