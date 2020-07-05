@@ -26,12 +26,14 @@ public:
         }
         
         int pics_len = pics.size(), videos_len = videos.size();
-
+        int video_pos = 0;
+ 
         for (int i = 0; i < pics_len; ++i) {
             result.push_back(pics[i]);
-            for (int j = 2 * i; j < 2 * i + n - 1; ++j) {
-                if (j >= videos_len) return result; 
-                result.push_back(videos[j]);
+            for (int j = 0; j < n - 1; ++j) {
+                if (video_pos >= videos_len) return result; 
+                result.push_back(videos[video_pos]);
+                video_pos++;
             }
             
         }

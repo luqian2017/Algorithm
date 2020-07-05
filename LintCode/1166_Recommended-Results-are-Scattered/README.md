@@ -29,3 +29,5 @@ Notice
 2 ≤ n ≤ number of elements
 Make sure there's at least 1 [picture P] in the elements.
 
+解法1：用数组。先把第一个P出现之前的V都存到结果里面，当出现第一个P之后，用2个数组分别存储P和V，然后打散存储，比如n=3，则1个P2个V，直到V数组全部用完。
+解法2：用queue。
