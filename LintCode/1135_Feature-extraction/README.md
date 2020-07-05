@@ -24,3 +24,9 @@ Notice
 Each line represents a frame. Among them, the first number is the number of features of the frame, and the next two numbers are a pair of <x, y>
 The total number of features does not exceed 10^5
 
+解法1：参考的网上的答案。我觉得非常不错。用2个map, preFreq表示每个坐标到上个时间点的累计出现次数，curFreq表示每个坐标到当前时间点的累计出现次数。
+
+注意：
+1）用一个map保存到当前所有的coordinate的freq不行。因为有些坐标到新的时间就没有了，这种情况没法处理。
+2)  每次用preFreq判断当前coordinate是否在里面。如果在，curFreq[coordinate] = preFreq[coordinate] + 1，如果不在，curFreq[coordinate]。每行判断完后，preFreq=curFreq, curFreq清零。这个思路非常好。对于preFreq里面的coordinate，如果当前时间点没出现，那么该coordinate的出现次数自动就是0了(因为curFreq清零了)。
+3）用unordered_map不行，编译通不过，说unordered_map没有end()？不知道为什么，下次再看。
