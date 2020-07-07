@@ -7,55 +7,55 @@ public:
      * @param b: the standard of each operation
      * @return: How many numbers are subtracted by one after each operation
      */
- void build(vector<int> &sum,vector<int> &a,int l,int r,int rt)
+ void build(vector<int> &sum,vector<int> &a,int left,int right,int root)
     {
-        if(l == r)
+        if (left == right)
         {
-            sum[rt] = a[l - 1];
+            sum[root] = a[left - 1];
             return;
         }
-        int m = (l + r) / 2;
-        build(sum, a, l, m, 2 * rt);
-        build(sum, a, m + 1, r, 2 * rt + 1);
+        int mid = (left + right) / 2;
+        build(sum, a, left, mid, 2 * root);
+        build(sum, a, mid + 1, right, 2 * root + 1);
     }
 
-    void pushDown(vector<int> &sum,vector<int> &add, int rt, int left_num, int right_num)
+    void pushDown(vector<int> &sum,vector<int> &add, int root, int left_num, int right_num)
     {
-        if(add[rt])
+        if (add[root])
         {
-            add[2 * rt] += add[rt];
-            add[2 * rt + 1] += add[rt];
-            sum[2 * rt] += add[rt] * left_num;
-            sum[2 * rt + 1] += add[rt] * right_num;
-            add[rt] = 0;
+            add[2 * root] += add[root];
+            add[2 * root + 1] += add[root];
+            sum[2 * root] += add[root] * left_num;
+            sum[2 * root + 1] += add[root] * right_num;
+            add[root] = 0;
         }
     }
 
-    void update(vector<int> &sum, vector<int> &add, int root_left, int root_right, int C, int query_left, int query_right, int rt)
+    void update(vector<int> &sum, vector<int> &add, int root_left, int root_right, int C, int query_left, int query_right, int root)
     {
-        if(root_left <= query_left && query_right <= root_right)
+        if (root_left <= query_left && query_right <= root_right)
         {
-            sum[rt] += C * (query_right - query_left + 1);
-            add[rt] += C;
+            sum[root] += C * (query_right - query_left + 1);
+            add[root] += C;
             return;
         }
-        int m = (query_left + query_right) / 2;
-        pushDown(sum, add, rt, m - query_left + 1, query_right - m); //m - l + 1 and r - m are counts needs to add the delay tag
-        if(root_left <= m) update(sum, add, root_left, root_right, C, query_left, m, 2 * rt);
-        if(root_right > m) update(sum, add, root_left, root_right, C, m + 1, query_right, 2 * rt + 1);
+        int mid = (query_left + query_right) / 2;
+        pushDown(sum, add, root, mid - query_left + 1, query_right - mid); //m - l + 1 and r - m are counts needs to add the delay tag
+        if (root_left <= mid) update(sum, add, root_left, root_right, C, query_left, mid, 2 * root);
+        if (root_right > mid) update(sum, add, root_left, root_right, C, mid + 1, query_right, 2 * root + 1);
     }
     
-    int query(vector<int> &sum,vector<int> &add, int root_left, int root_right, int query_left, int query_right, int rt)
+    int query(vector<int> &sum,vector<int> &add, int root_left, int root_right, int query_left, int query_right, int root)
     {
-        if(root_left <= query_left && query_right <= root_right)
+        if (root_left <= query_left && query_right <= root_right)
         {
-            return sum[rt];
+            return sum[root];
         }
-        int m = (query_left + query_right) / 2;
-        pushDown(sum, add, rt, m - query_left + 1, query_right - m);
+        int mid = (query_left + query_right) / 2;
+        pushDown(sum, add, root, mid - query_left + 1, query_right - mid);
         int ans = 0;
-        if(root_left <= m) ans += query(sum, add, root_left, root_right, query_left, m, 2 * rt);
-        if(root_right > m) ans += query(sum, add, root_left, root_right, m + 1, query_right, 2 * rt + 1);
+        if (root_left <= mid) ans += query(sum, add, root_left, root_right, query_left, mid, 2 * root);
+        if (root_right > mid) ans += query(sum, add, root_left, root_right, mid + 1, query_right, 2 * root + 1);
         return ans;
     }
 
@@ -71,12 +71,12 @@ public:
             int left = 1, right = n, pos = -1;
             
             while (left + 1 < right){
-                int m = (left + right) / 2;
-                if (query(sum, add, m, m, 1, n, 1) >= b[i]){
-                    right = m;
-                    pos = m;
+                int mid = (left + right) / 2;
+                if (query(sum, add, mid, mid, 1, n, 1) >= b[i]){
+                    right = mid;
+                    pos = mid;
                 } else {
-                    left = m;
+                    left = mid;
                 }
             }
             
