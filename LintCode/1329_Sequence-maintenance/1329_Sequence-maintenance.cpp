@@ -93,7 +93,7 @@ public:
             }
             else {
                 ans.push_back( n - pos + 1);
-                update(sum, add, pos, n, -1, 1, n, 1);
+                update(sum, add, pos, n, -1, 1, n, 1); //C=-1, root = 1
             }
         }
 
