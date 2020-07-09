@@ -34,6 +34,6 @@ public:
             if (result[i] != '0') return result.substr(i);
         }
         
-        return "0"        
+        return "0";        
     }
 };

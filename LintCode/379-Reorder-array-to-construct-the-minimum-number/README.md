@@ -28,3 +28,4 @@ Do it in O(nlogn) time complexity.
 Notice
 The result may be very large, so you need to return a string instead of an integer.
 
+解法1：贪心法。记得按字典顺序排序的cmp技巧是比较a+b vs b+a。
