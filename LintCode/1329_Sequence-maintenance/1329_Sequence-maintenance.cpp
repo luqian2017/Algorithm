@@ -7,7 +7,48 @@ public:
      * @param b: the standard of each operation
      * @return: How many numbers are subtracted by one after each operation
      */
- void build(vector<int> &sum,vector<int> &a,int left,int right,int root)
+    vector<int> sequenceMaintenance(int n, int q, vector<int> &a, vector<int> &b) {
+        sort(a.begin(), a.end());
+        vector<int> sum, add, ans;
+        sum.assign(4 * n, 0);
+        add.assign(4 * n, 0);
+        
+        build(sum, a, 1, n, 1);
+
+        for (int i = 0; i < q; i++){
+            int left = 1, right = n, pos = -1;
+            
+            while (left + 1 < right){
+                int mid = (left + right) / 2;
+                if (query(sum, add, mid, mid, 1, n, 1) >= b[i]){
+                    right = mid;
+                    pos = mid;
+                } else {
+                    left = mid;
+                }
+            }
+            
+            if (query(sum, add, right, right, 1, n, 1) >= b[i]){
+                pos = right;
+            }
+            
+            if (query(sum, add, left, left, 1, n, 1) >= b[i]){
+                pos = left;
+            }
+
+            if (pos == -1) {
+                ans.push_back(0);
+            }
+            else {
+                ans.push_back( n - pos + 1);
+                update(sum, add, pos, n, -1, 1, n, 1); //C = -1, root = 1
+            }
+        }
+
+        return ans;
+    }
+private:
+    void build(vector<int> &sum,vector<int> &a,int left,int right,int root)
     {
         if (left == right)
         {
@@ -59,47 +100,6 @@ public:
         int ans = 0;
         if (root_left <= mid) ans += query(sum, add, root_left, root_right, left, mid, 2 * root);
         if (root_right > mid) ans += query(sum, add, root_left, root_right, mid + 1, right, 2 * root + 1);
-        return ans;
-    }
-
-    vector<int> sequenceMaintenance(int n, int q, vector<int> &a, vector<int> &b) {
-        sort(a.begin(), a.end());
-        vector<int> sum, add, ans;
-        sum.assign(4 * n, 0);
-        add.assign(4 * n, 0);
-        
-        build(sum, a, 1, n, 1);
-
-        for (int i = 0; i < q; i++){
-            int left = 1, right = n, pos = -1;
-            
-            while (left + 1 < right){
-                int mid = (left + right) / 2;
-                if (query(sum, add, mid, mid, 1, n, 1) >= b[i]){
-                    right = mid;
-                    pos = mid;
-                } else {
-                    left = mid;
-                }
-            }
-            
-            if (query(sum, add, right, right, 1, n, 1) >= b[i]){
-                pos = right;
-            }
-            
-            if (query(sum, add, left, left, 1, n, 1) >= b[i]){
-                pos = left;
-            }
-
-            if (pos == -1) {
-                ans.push_back(0);
-            }
-            else {
-                ans.push_back( n - pos + 1);
-                update(sum, add, pos, n, -1, 1, n, 1); //C = -1, root = 1
-            }
-        }
-
         return ans;
     }
 };
