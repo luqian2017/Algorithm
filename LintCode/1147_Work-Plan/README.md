@@ -23,3 +23,12 @@ Notice
 1 \leq |low|,|high| \leq 100001≤∣low∣,∣high∣≤10000
 1 \leq low[i],high[i] \leq 100001≤low[i],high[i]≤10000
 
+
+解法1：前缀和DP
+dp[i] the max value upto the ith week
+转移方程为：dp[i] = max(dp[i - 1] + low[i], dp[i - 2] + high[i])
+当第i周从事low工作时，第i-1周可能是high或low，dp[i-1]包括了这2种可能。为什么不用考虑dp[i-2]呢？因为第i-2周从事high或low的情况都已经考虑在dp[i-1]周。
+当第i周从事high工作时，第i-1周只可能休息，所以前i-1周的工作量和前i-2周的工作量一样，只需看dp[i-1]即可。
+
+解法2：坐标型DP
+dp[i][j]: the max value upto the ith week, and does the work j - 1:high, 0:low

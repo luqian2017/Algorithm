@@ -24,3 +24,6 @@ Explanation: We poured 2 cups of champange to the top glass of the tower (which 
 Notice
 poured will be in the range of [0, 10 ^ 9].
 query_glass and query_row will be in the range of [0, 99].
+
+解法1：坐标型DP
+注意dp[i][j] 表示注入到第i行的第j列的glass的香槟总量，而不是残留总量，否则转移方程很难确立。
