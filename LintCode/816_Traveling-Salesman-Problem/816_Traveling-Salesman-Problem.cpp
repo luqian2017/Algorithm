@@ -47,8 +47,6 @@ private:
             int source = roads[i][0];
             int destination = roads[i][1];
             int cost = roads[i][2];
-        //    graph[source][destination] = cost;
-        //    graph[destination][source] = cost;
             graph[source][destination] = min(graph[source][destination], cost);
             graph[destination][source] = min(graph[destination][source], cost);
 
