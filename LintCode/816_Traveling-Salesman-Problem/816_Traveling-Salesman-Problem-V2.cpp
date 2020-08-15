@@ -6,11 +6,8 @@ public:
      * @return: return the minimum cost to travel all cities
      */
     int minCost(int n, vector<vector<int>> &roads) {
-        vector<vector<int>> cityLink(12, vector<int>(12, INT_MAX / 100));
-        
-        int dp[12][4096];     //dp[i][j]: the min cost of first i cities, with state = j
-        memset(dp, INT_MAX / 100, sizeof(dp));
-        //vector<vector<int>> dp(12, vector<int>(4096, 0x3f));  //2^12=4096, at most 12 cities.
+        vector<vector<int>> cityLink(n, vector<int>(n, INT_MAX));
+        vector<vector<int>> dp(n, vector<int>(1 << n, INT_MAX));
         
         for (auto & road: roads){
             int cityA = road[0] - 1, cityB = road[1] - 1, dist = road[2];
@@ -22,14 +19,12 @@ public:
       
         dp[0][1] = 0; //cost of city 0 to itself is 0
         while (!maxHeap.empty()){
-            //pair<int, pair<int,int>> now = maxHeap.top();
             auto now = maxHeap.top();
             maxHeap.pop();
     		int cost = now.first, city = now.second.first, state = now.second.second;
     		
-    		if(cost > dp[city][state]) continue;
-    		
     		for(int i = 0; i < n; ++i){
+    		    if (cityLink[city][i] == INT_MAX) continue;
     		    if ((state & (1 << i)) == 0) { //if city i has not been visited
         			int new_state = (state | (1 << i)); //old state + city i
         			if(dp[i][new_state] > dp[city][state] + cityLink[city][i]) {
