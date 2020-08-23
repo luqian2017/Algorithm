@@ -7,10 +7,10 @@ public:
      */
      
     vector<string> stringSplitter(string text){
-        std::vector<std::string> tokens;
-        std::size_t start = 0, end = 0;
+        vector<string> tokens;
+        size_t start = 0, end = 0;
         string sep = ", ";
-        while ((end = text.find(sep, start)) != std::string::npos) {
+        while ((end = text.find(sep, start)) != string::npos) {
             if (end != start) {
               tokens.push_back(text.substr(start, end - start));
             }
