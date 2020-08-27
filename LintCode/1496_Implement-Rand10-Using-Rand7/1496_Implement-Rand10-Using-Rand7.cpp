@@ -6,7 +6,7 @@ public:
     int rand10() {
         int sum1 = 0, sum2 = 0;
         sum1 = rand7();
-        while ((sum2 = rand7()) > 3) continue;
+        while ((sum2 = rand7()) > 4) continue;
         return sum1 + sum2 - 1;
     }
 };
