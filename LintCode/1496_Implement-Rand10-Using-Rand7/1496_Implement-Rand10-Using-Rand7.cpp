@@ -4,9 +4,15 @@
 class Solution :public SolBase {
 public:
     int rand10() {
-        int sum1 = 0, sum2 = 0;
-        sum1 = rand7();
-        while ((sum2 = rand7()) > 4) continue;
-        return sum1 + sum2 - 1;
+        int a, b, sum;
+        do
+        {
+            a = rand7() - 1;
+            b = rand7();
+            sum = a * 7 + b;
+        } while(sum > 40);
+
+        return (sum - 1) / 4 + 1;
     }
 };
+
