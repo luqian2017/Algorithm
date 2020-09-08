@@ -16,10 +16,7 @@ public:
                 right++;
             }
         }
-        for (auto a : result) {
-            cout<<a<<endl;
-        }
-        
+
         return result.size();
     }
 };
