@@ -19,8 +19,8 @@ private:
     bool colored(int node, vector<vector<int>> &graph, vector<int> & colors, int color) {
         colors[node] = color;
         for (auto j : graph[node]) {
-            if (colors[j] == 0 && !colored(j, graph, colors, -color)) return false;
             if (colors[j] == color) return false;
+            if (colors[j] == 0 && !colored(j, graph, colors, -color)) return false;
         }
 
         return true;
