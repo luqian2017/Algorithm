@@ -25,11 +25,11 @@ private:
             int curNode = q.front();
             q.pop();
             for (auto n : graph[curNode]) {
-                if (colors[n] != 0) {
-                    if (colors[n] == colors[curNode]) return false;
-                } else {
+                if (colors[n] == 0) {
                     colors[n] = -colors[curNode];
                     q.push(n);
+                } else {
+                    if (colors[n] == colors[curNode]) return false;
                 }
             }
         }
