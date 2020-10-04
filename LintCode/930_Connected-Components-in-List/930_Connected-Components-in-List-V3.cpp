@@ -20,19 +20,19 @@ public:
      */
     int blockNumber(DoublyListNode * head, vector<int> &nodes) {
         int n = nodes.size();
-        unordered_map<int, bool> nodes_mp; //<node_val, visited>
+        unordered_set<int> node_set;
         int count = 0;
 
         for (int i = 0; i < n; ++i) {
-            nodes_mp[nodes[i]] = false;
+            node_set.insert(nodes[i]);
         }
         
         DoublyListNode * node = head;
         while(node) {
-            if (nodes_mp.find(node->val) != nodes_mp.end() && !nodes_mp[node->val]) {
+            if (node_set.find(node->val) != node_set.end()) {
                 count++;
-                while (node && nodes_mp.find(node->val) != nodes_mp.end() && !nodes_mp[node->val]) {
-                    nodes_mp[node->val] = true;
+                while (node && node_set.find(node->val) != node_set.end()) {
+                    node_set.insert(node->val);
                     node = node->next;
                 }
             } else {
