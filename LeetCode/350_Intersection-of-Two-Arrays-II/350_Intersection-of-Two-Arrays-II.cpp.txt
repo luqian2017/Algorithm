@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> res;
+        unordered_map<int, int> us;
+        for (auto n : nums1) {
+            if (us.find(n) == us.end()) us[n] = 1;
+            else us[n]++;
+        }
+        for (auto n : nums2) {
+            if (us[n] > 0) {  //note: it is wrong to use if (us.find(n) != us.end())  as even if us[0]=0, it is still in the map!
+                res.push_back(n);
+                us[n]--;
+            }
+        }
+        return res;
+    }
+};
