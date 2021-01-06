@@ -62,7 +62,7 @@ private:
             } while (start >= 0);
         } else if (nums[start] < 0 && nums[start] == nums[maxNegIndex]) {
             start = minPosIndex;
-        } else if (minPosIndex >= 0) { //may not need  if (minPosIndex >= 0) 
+        } else {//if (minPosIndex >= 0) { //may not need  if (minPosIndex >= 0) 
             do {
                 start++;
                 if (nums[start] >= 0) break;
@@ -79,7 +79,7 @@ private:
             } while (end >= 0);
         } else if (nums[end] >= 0 && nums[end] == nums[minPosIndex]) {
             end = maxNegIndex;
-        } else if (maxNegIndex >= 0){ //may not need if (maxNegIndex >= 0)
+        } else {// if (maxNegIndex >= 0){ //may not need if (maxNegIndex >= 0)
             do {
                 end++;
                 if (nums[end] < 0) break;
