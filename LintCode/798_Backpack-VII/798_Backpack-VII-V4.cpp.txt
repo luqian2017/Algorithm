@@ -1,0 +1,27 @@
+class Solution {
+public:
+    /**
+     * @param n: the money of you
+     * @param prices: the price of rice[i]
+     * @param weight: the weight of rice[i]
+     * @param amounts: the amount of rice[i]
+     * @return: the maximum weight
+     */
+    int backPackVII(int n, vector<int> &prices, vector<int> &weight, vector<int> &amounts) {
+        int m = prices.size();
+        vector<int> dp(n + 1, 0);
+        
+        for (int i = 0; i < m; ++i) {
+            int s = amounts[i];
+            for (int j = 1; s; j *= 2) {
+                if (j > s) j = s; //j代表这堆多少个
+                s -= j;
+                for (int k = n; k >= j * prices[i]; k--) {
+                    dp[k] = max(dp[k], dp[k - j * prices[i]] + j * weight[i]);
+                }
+            }
+        }
+        
+        return dp[n];
+    }
+};
