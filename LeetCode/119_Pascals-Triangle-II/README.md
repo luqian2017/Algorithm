@@ -1,9 +1,5 @@
 119. Pascal's Triangle II
 
-Easy
-
-1220217Add to ListShare
-
 Given an integer `rowIndex`, return the `rowIndexth` row of the Pascal's triangle.
 
 Notice that the row index starts from **0**.
