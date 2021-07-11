@@ -12,8 +12,8 @@ public:
             num = -num;
         }
         while (num) {
-            //res = ('0' + (num % 7)) + res;
             res = to_string(num % 7) + res;
+            //res = (char)((num % 7) + '0') + res; // is also OK
             num /= 7;
         }
         
