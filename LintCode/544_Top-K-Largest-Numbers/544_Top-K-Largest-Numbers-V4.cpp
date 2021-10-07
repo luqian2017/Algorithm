@@ -20,9 +20,11 @@ public:
             }
         }
         vector<int> res;
-        while (!minHeap.empty()) {
+        int count = 0;
+        while (!minHeap.empty() && count < k) {
             res.push_back(minHeap.top());
             minHeap.pop();
+            count++;
         }
         reverse(res.begin(), res.end());
         return res;
